@@ -1,7 +1,11 @@
+
 {
-  "name": "Blog",
-  "version": "0.0.0",
-  "private": false,
+  "name": "blog",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "6.9.2"
+  },
   "scripts": {
     "start": "node ./bin/www"
   },

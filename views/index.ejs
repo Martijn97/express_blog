@@ -5,27 +5,28 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
 		<script src="/javascripts/angularApp.js"></script>
+		<link  rel="stylesheet" type="text/css" href="/stylesheets/style.css"></link>
 		<style> .glyphicon-thumbs-up { cursor:pointer } </style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
 	</head>
-	<body ng-app="Blog" style="background: url('images/wood.jpg'); background-size: cover;">
+	<body ng-app="Blog">
 		<div class="container">
 			<div class="Row" >
-				<div class="col-md-10 col-md-offset-1">
+				<div class="col-md-12 col-md-offset-0">
 				    <ui-view></ui-view>
     	    	</div>
    			</div>
    		</div>
    		<script type="text/ng-template" id="/home.html">
 			<div class="Page header">
-				<h1>Blog</h1><h4>by Martijn Noordhof</h4>
+				<h1>Blog</h1>&nbsp;<h4>by Martijn Noordhof</h4>
 			</div>
-			<div ng-repeat="post in posts" style="background-color: rgba(0, 0, 0, 0.1); color:black;">
-				<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+			<div class="well" ng-repeat="post in posts" style="background-color: rgba(0, 0, 0, 0.2);">
+				<button type="button" class="glyphicon glyphicon-thumbs-up btn btn-success" ng-click="incrementUpvotes(post)"></button>
 				{{post.upvotes}}
-				<span class="glyphicon glyphicon-thumbs-down" ng-click="decrementUpvotes(post)"></span>
-					<span  style="font-size:20px; margin-left:10px;">
+				<button type="button" class="glyphicon glyphicon-thumbs-down btn btn-danger" ng-click="decrementUpvotes(post)"></button>
+					<span  style="font-size:25px; margin-left:10px;">
 						{{post.title}}
 					</span>
 				    <span>
@@ -38,8 +39,9 @@
 					</span>
 				</span>
 			</div>
-
-			    <form ng-submit="addPost()" style='"margin-top:30px'>
+		</script>
+		<script  type="text/ng-template" id ="/admin.html" >
+			    <form ng-submit="addPost()">
 			    	<h3>New post</h3>
 
 			    	<div class="form-group">
@@ -61,28 +63,27 @@
 		<script type="text/ng-template" id="/posts.html">
 
 			<div class="page-header">
-	            <h2>
-	                <a ng-show="post.link" href="{{post.link}}">
-	                    {{post.title}}
-	                </a>
-	                <span ng-hide="post.link">
+	            <h2 style="display:inline-block";>
+	                <span>
 	                    {{post.title}}
 	                </span>
 	            </h2>
-	            <a href="#/posts" style='color:black'> <- Back</a>
+	            &nbsp;
+	            <a type="button" class="btn btn-primary glyphicon glyphicon-share-alt" style='display:inline-block; color:black;' href="#/posts">Back</a>
         	</div>
 
 			<div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-				<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvote(comment)"></span>
+				<button type="button" class="glyphicon glyphicon-thumbs-up btn btn-success" ng-click="incrementUpvote(comment)"></button>
 					{{comment.upvotes}}
-				<span class="glyphicon glyphicon-thumbs-down" ng-click="decrementUpvote(comment)"></span>
+				<button type="button" class="glyphicon glyphicon-thumbs-down btn btn-danger" ng-click="decrementUpvote(comment)"></button>
 				 - by {{comment.author}}
 				<span style="font-size:20px; margin-left:10px;">
 			    	{{comment.body}}
 			    </span>
-			</div>
+			    <br><br>
+			</div>	
 
-			    <form ng-submit="addComment()" style="margin-top:30px;">
+			    <form ng-submit="addComment()">
 					<h3>Add a new comment</h3>
 
 					<div class="form-group">

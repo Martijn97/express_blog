@@ -21,6 +21,11 @@ angular.module('Blog', ['ui.router'])
 				}]
 			}
 		});
+		$stateProvider.state('admin',{
+			url:'/admin',
+			templateUrl:'/admin.html',
+			controller:'MainCtrl',
+		});
 	$urlRouterProvider.otherwise('home');
 }])
 

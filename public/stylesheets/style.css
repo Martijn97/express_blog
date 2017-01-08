@@ -1,8 +1,27 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url('../images/wood.jpg'); 
+  background-size: cover;
 }
 
 a {
   color: #00B7FF;
+}
+
+h5 {
+	font-size: 20px;
+}
+
+h1 {
+	font-size: 75px;
+	display: inline-block;
+}
+
+h4 {
+	display: inline-block;
+}
+
+form {
+	 margin-top:30px;
 }
