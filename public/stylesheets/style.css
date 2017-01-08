@@ -6,7 +6,11 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color:black;
+}
+
+label {
+	font-size: 20px;
 }
 
 h5 {
