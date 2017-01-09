@@ -35,16 +35,17 @@ angular.module('Blog', ['ui.router'])
 
 		$scope.addPost = function(){
 			if( !$scope.title || $scope.title === ''){return;}
+			if( !$scope.date || $scope.date === ''){return;}
 			if( !$scope.text || $scope.text === ''){return;}
 
 			posts.create({
 				title: $scope.title,
-				link: $scope.link,
+				date: $scope.date,
 				text: $scope.text,
 			});
 
 			$scope.title = '';
-			$scope.link = '';
+			$scope.date = '';
 			$scope.text = '';
 		}
 
@@ -68,11 +69,12 @@ angular.module('Blog', ['ui.router'])
 
 		posts.addComment(post._id, {
 			body: $scope.body,
-			author: 'user',
+			user: $scope.user,
 		}).success(function(comment){
 			$scope.post.comments.push(comment);
 		});
 
+		$scope.user = '';
 		$scope.body = '';
 	};
 
